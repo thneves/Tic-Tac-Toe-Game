@@ -35,7 +35,6 @@ while winner == false || draw == false
   end
 validator = false
   unless  validator
-   
     puts "(#{player2}) choose your move :"
     p2 = gets.chomp
     if spots.include?(p2) 
