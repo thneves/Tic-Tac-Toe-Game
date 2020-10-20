@@ -24,8 +24,7 @@ current_player = player1
 
 while winner == false || draw == false
 
-
-  unless  validator
+  unless validator
     puts "(#{current_player.name}) choose your move :"
     player_input = gets.chomp
 
@@ -49,15 +48,9 @@ while winner == false || draw == false
 
   validator = false
 
-  draw = true if spots == []
-  
-  winner_cases.each |case|
-    winner = true if current_player.mark_spots.include?(case)
-  end  
-  
+  draw = true if spots.empty?
 
-  
-
-
+  winner_cases.each do |x|
+    winner = true if (x - current_player.mark_spots).empty?
+  end
 end
-
