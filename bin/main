@@ -15,16 +15,19 @@ puts board
 
 validator = false
 
+current_player = player1
+mark = 'x'
+
 while winner == false || draw == false
 
   unless validator
-    puts "(#{player1}) choose one available spot number in the board :"
+    puts "(#{current_player}) choose one available spot number in the board :"
     p1 = gets.chomp
 
     if spots.include?(p1)
       spots.delete(p1)
       validator = true
-      board = board.gsub(p1, 'x')
+      board = board.gsub(p1, mark)
       puts board
       puts 'Your move is a winning move'
       puts 'Your move is a draw move'
@@ -34,23 +37,12 @@ while winner == false || draw == false
     end
   end
 
-  validator = false
-
-  unless validator
-    puts "(#{player2}) choose one available spot number in the board :"
-    p2 = gets.chomp
-
-    if spots.include?(p2)
-      spots.delete(p2)
-      validator = true
-      board = board.gsub(p2, 'o')
-      puts board
-      puts 'Your move is a winning move'
-      puts 'Your move is a draw move'
-    else
-      puts 'Enter a valid spot number: '
-      next
-    end
+  if current_player == player1
+    current_player = player2
+    mark = 'o'
+  elsif current_player == player2
+    current_player = player1
+    mark = 'x'
   end
 
   validator = false
