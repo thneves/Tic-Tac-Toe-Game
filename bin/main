@@ -5,9 +5,9 @@ draw = false
 
 spots = %w[1 2 3 4 5 6 7 8 9]
 puts 'Enter name for the first player'
-player1 = 'player1'
+player1 = gets.chomp
 puts 'Enter name for the second player'
-player2 = 'player2'
+player2 = gets.chomp
 
 board = "\n[1] [2] [3]\n[4] [5] [6]\n[7] [8] [9]\n"
 
@@ -18,15 +18,16 @@ validator = false
 while winner == false || draw == false
 
   unless  validator
-    puts "(#{player1}) choose your move :"
+    puts "(#{player1}) choose one available spot number in the board :"
     p1 = gets.chomp
 
     if spots.include?(p1)
       spots.delete(p1)
       validator = true
-      print spots
       board = board.gsub(p1, 'x')
       puts board
+      puts "Your move is a winning move"
+      puts "Your move is a draw move"
     else
       puts 'Enter a valid spot number: '
       next
@@ -36,15 +37,16 @@ while winner == false || draw == false
   validator = false
 
   unless validator
-    puts "(#{player2}) choose your move :"
+    puts "(#{player2}) choose one available spot number in the board :"
     p2 = gets.chomp
 
     if spots.include?(p2)
       spots.delete(p2)
       validator = true
-      print spots
       board = board.gsub(p2, 'o')
       puts board
+      puts "Your move is a winning move"
+      puts "Your move is a draw move"
     else
       puts 'Enter a valid spot number: '
       next
