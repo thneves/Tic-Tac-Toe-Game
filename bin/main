@@ -17,7 +17,7 @@ validator = false
 
 while winner == false || draw == false
 
-  unless  validator
+  unless validator
     puts "(#{player1}) choose one available spot number in the board :"
     p1 = gets.chomp
 
@@ -26,8 +26,8 @@ while winner == false || draw == false
       validator = true
       board = board.gsub(p1, 'x')
       puts board
-      puts "Your move is a winning move"
-      puts "Your move is a draw move"
+      puts 'Your move is a winning move'
+      puts 'Your move is a draw move'
     else
       puts 'Enter a valid spot number: '
       next
@@ -45,8 +45,8 @@ while winner == false || draw == false
       validator = true
       board = board.gsub(p2, 'o')
       puts board
-      puts "Your move is a winning move"
-      puts "Your move is a draw move"
+      puts 'Your move is a winning move'
+      puts 'Your move is a draw move'
     else
       puts 'Enter a valid spot number: '
       next
