@@ -11,19 +11,17 @@ validator = false
 
 while game.game_on
 
-    if game.first_run
-      puts 'Enter name for the first player'
-      name = gets.chomp
-      player1 = Player.new(name, 'x', 1)
-      puts 'Enter name for the second player'
-      name = gets.chomp
-      player2 = Player.new(name, 'o', 2)
-      
-      puts game.board
-      current_player = player1
-      game.first_run = false
-    end
-
+  if game.first_run
+    puts 'Enter name for the first player'
+    name = gets.chomp
+    player1 = Player.new(name, 'x', 1)
+    puts 'Enter name for the second player'
+    name = gets.chomp
+    player2 = Player.new(name, 'o', 2)
+    puts game.board
+    current_player = player1
+    game.first_run = false
+  end
 
   unless validator
     puts "#{current_player.name} YOUR TURN :"
