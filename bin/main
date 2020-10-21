@@ -27,6 +27,8 @@ while game_on
     puts "#{current_player} YOUR TURN :"
     puts 'choose one available spot number in the board'
     player_input = gets.chomp
+    puts 'your move is a winning move!' # if (winning_move)
+    puts 'your move is a draw move!' # if (draw_move)
 
     if spots.include?(player_input)
       spots.delete(player_input)
@@ -40,7 +42,10 @@ while game_on
   end
 
   validator = false
-  draw = true if spots.empty?
+  if spots.empty?
+    draw = true
+    puts "NO ONE WINS! IT'S A DRAW!!"
+  end
 
   if current_player == player1
     current_player = player2
@@ -52,4 +57,19 @@ while game_on
 
   game_on = false if winner == true || draw == true
 
+  while game_on == false
+    puts 'Do you wanna play again? (Y/N)'
+    reset_game = gets.chomp.upcase
+    choices = %w[Y N]
+    until choices.include?(reset_game)
+      puts "Digit 'Y' or 'N'"
+      reset_game = gets.chomp.upcase
+    end
+    if reset_game == 'Y'
+      puts "We'll reset the game"
+    else
+      puts 'THANKS FOR PLAYING!!'
+    end
+    break
+  end
 end
