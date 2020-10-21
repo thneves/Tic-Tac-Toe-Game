@@ -1,5 +1,6 @@
 class Player
-  attr_accessor :name, :symbol, :turn, :mark_spots
+  attr_accessor :name, :mark_spots, :current_player
+  attr_reader :symbol, :turn
   def initialize(name, symbol, turn)
     @name = name
     @symbol = symbol

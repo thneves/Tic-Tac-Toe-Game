@@ -1,5 +1,7 @@
 class Game
-  attr_accessor :spots, :winner, :draw, :board, :game_on, :first_run, :validator, :winner_cases, :continue
+  attr_accessor :spots, :winner, :draw, :board, :game_on, :first_run, :validator, :current_player
+  attr_reader :winner_cases
+
   def initialize
     @winner = false
     @draw = false
@@ -9,6 +11,7 @@ class Game
     @winner_cases = [%w[1 2 3], %w[4 5 6], %w[7 8 9], %w[1 4 7], %w[1 5 9], %w[2 5 8], %w[3 6 9], %w[3 5 7]]
     @game_on = true
     @first_run = true
+    @current_player = nil
   end
 
   def update_board(input, sym)
@@ -25,7 +28,7 @@ class Game
   def draw_message
     if @spots.empty?
       @draw = true
-      "\n NO ONE WINS! IT'S A DRAW!!"
+      "\nNO ONE WINS! IT'S A DRAW!!"
     else
       ''
     end
@@ -40,5 +43,22 @@ class Game
       return "#{current_player.name} IS THE WINNER! CONGRATULATIONS"
     end
     ''
+  end
+
+  def change_player(player1, player2)
+    if @current_player == player1
+      @current_player = player2
+    elsif current_player == player2
+      @current_player = player1
+    end
+  end
+
+  def reset_game(new_game, answer)
+    if answer == 'Y'
+      new_game = Game.new
+      new_game
+    elsif answer == 'N'
+      'THANKS FOR PLAYING!'
+    end
   end
 end
