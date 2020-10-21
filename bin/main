@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require '../lib/player.rb'
+
 winner = false
 draw = false
 
@@ -24,8 +26,8 @@ while winner == false || draw == false
     puts "(#{current_player}) choose one available spot number in the board :"
     p1 = gets.chomp
 
-    if spots.include?(p1)
-      spots.delete(p1)
+    if spots.include?(player_input)
+      spots.delete(player_input)
       validator = true
       board = board.gsub(p1, mark)
       puts board
@@ -46,5 +48,10 @@ while winner == false || draw == false
   end
 
   validator = false
+
+  draw = true if spots == []
+  
+  winner_cases = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [1, 5, 9], [2, 5, 8], [3, 6, 9], [3, 5, 7]]
+
 
 end
