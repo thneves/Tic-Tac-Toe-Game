@@ -21,4 +21,24 @@ class Game
       false
     end
   end
+
+  def draw_message
+    if @spots.empty?
+      @draw = true
+      "\n NO ONE WINS! IT'S A DRAW!!"
+    else
+      ''
+    end
+  end
+
+  def winner_message(current_player)
+    @winner_cases.each do |x|
+      next unless (x - current_player.mark_spots).empty?
+
+      @winner = true
+      @draw = false
+      return "#{current_player.name} IS THE WINNER! CONGRATULATIONS"
+    end
+    ''
+  end
 end

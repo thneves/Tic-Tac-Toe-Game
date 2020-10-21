@@ -35,17 +35,9 @@ while game.game_on
 
   game.validator = false
 
-  if game.spots.empty?
-    game.draw = true
-    puts "NO ONE WINS! IT'S A DRAW!!"
-  end
+  puts game.winner_message(current_player)
 
-  game.winner_cases.each do |x|
-    if (x - current_player.mark_spots).empty?
-      game.winner = true
-      puts "#{current_player.name} IS THE WINNER! CONGRATULATIONS"
-    end
-  end
+  puts game.draw_message
 
   if current_player == player1
     current_player = player2
