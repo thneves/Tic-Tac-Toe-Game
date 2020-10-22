@@ -29,8 +29,8 @@ To get a local copy up and running follow these steps.
   - For linux press Ctrl + Alt + T. 
   - If you are on Mac, first click Go > Utilities from the menu bar. In the Utilities folder that opens, double-click Terminal. 
 - Make sure you are on the right drive where you downloaded or cloned the project folder. To do this just write cmd + "the name of your drive " + ":" and press enter. For example,  cmd d: and press enter. 
-- Navigate to the project folder on the terminal. To do this write cmd + "project folder location" and press enter. For example on windows, cmd d:\users\john\Tic-Tac-Toe-Game and press enter. On linux you have to be carefull about writing '/' instead of '\'.
-- Write "bin\main" on the terminal an press enter. Again, on linux make sure you are using '/' instead of '\'.
+- Navigate to the project folder on the terminal. To do this write cmd + "project folder location" and press enter. For example on windows, cmd d:\users\john\Tic-Tac-Toe-Game and press enter. On linux you have to be carefull about writing '/' instead.
+- Write "bin\main" on the terminal an press enter. Again, on linux make sure you are using '/' instead.
 - Enjoy. 
 
 ## If you don't want to setup the game locally, you can play the game on Repl.it:
