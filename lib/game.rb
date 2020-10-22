@@ -26,7 +26,7 @@ class Game
   end
 
   def draw_message
-    if @spots.empty?
+    if @spots.empty? && @winner == false
       @draw = true
       "\nNO ONE WINS! IT'S A DRAW!!"
     else
