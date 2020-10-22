@@ -21,10 +21,18 @@ To get a local copy up and running follow these steps.
 - You need to have [Ruby](https://www.ruby-lang.org/en/) installed in your local machine: 
 
 ### Setup & install
-- You can clone or download the project folder by using the green button above. We assume that you know how to use git and the terminal to clone the repository, otherwise just download the folder. 
+- You can clone or download the project folder by using the green button above. In case you want to clone the repository you can follow the next instructions, ohterwise just download the folder in a directory of your choice: 
+  - Make sure you have [git](https://git-scm.com/) installed. 
+  - Open the terminal following the next set of instructions: 
+    - For MS-windows, press the Windows Key + R, write cmd on the box and press enter. 
+    - For linux press Ctrl + Alt + T. 
+    - If you are on Mac, first click Go > Utilities from the menu bar. In the Utilities folder that opens, double-click Terminal. 
+  - Navigate to the folder where you want to clone the project folder by using the "cd" command on the terminal followed by the path of your choice. 
+  - type "git clone https://github.com/thneves/Tic-Tac-Toe-Game.git" and press enter. 
+  
 
 ### Usage:
-- Open you terminal:  
+- Open you terminal if you don't have it open:  
   - For MS-windows, press the Windows Key + R, write cmd on the box and press enter. 
   - For linux press Ctrl + Alt + T. 
   - If you are on Mac, first click Go > Utilities from the menu bar. In the Utilities folder that opens, double-click Terminal. 
