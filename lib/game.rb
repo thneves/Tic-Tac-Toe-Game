@@ -1,6 +1,6 @@
 class Game
-  attr_accessor :spots, :winner, :draw, :board, :game_on, :first_run, :validator, :current_player
-  attr_reader :winner_cases
+  attr_accessor :spots, :game_on, :first_run, :validator, :current_player
+  attr_reader :winner_cases, :winner, :draw, :board
 
   def initialize
     @winner = false

@@ -9,10 +9,10 @@ while game.game_on
 
   if game.first_run
     puts 'Enter name for the first player'
-    name = gets.chomp
+    name = gets.chomp.strip
     player1 = Player.new(name, 'x', 1)
     puts 'Enter name for the second player'
-    name = gets.chomp
+    name = gets.chomp.strip
     player2 = Player.new(name, 'o', 2)
     puts game.board
     game.current_player = player1

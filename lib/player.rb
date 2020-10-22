@@ -1,6 +1,6 @@
 class Player
-  attr_accessor :name, :mark_spots, :current_player
-  attr_reader :symbol, :turn
+  attr_accessor :current_player
+  attr_reader :symbol, :turn, :name, :mark_spots
   def initialize(name, symbol, turn)
     @name = "Player #{turn}" if name == ''
     @name = name if name != ''
