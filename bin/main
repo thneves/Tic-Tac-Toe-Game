@@ -1,75 +1,63 @@
 #!/usr/bin/env ruby
 
-# require '../lib/player.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
 
-# winner_cases = [%w[1 2 3], %w[4 5 6], %w[7 8 9], %w[1 4 7], %w[1 5 9], %w[2 5 8], %w[3 6 9], %w[3 5 7]]
-winner = false
-draw = false
-board = "\n[1] [2] [3]\n[4] [5] [6]\n[7] [8] [9]\n"
-spots = %w[1 2 3 4 5 6 7 8 9]
-puts 'Enter name for the first player'
-player1 = gets.chomp
-puts 'Enter name for the second player'
-player2 = gets.chomp
+game = Game.new
 
-puts board
+while game.game_on
 
-game_on = true
+  if game.first_run
+    puts 'Enter name for the first player'
+    name = gets.chomp.strip
+    player1 = Player.new(name, 'x', 1)
+    puts 'Enter name for the second player'
+    name = gets.chomp.strip
+    player2 = Player.new(name, 'o', 2)
+    puts game.board
+    game.current_player = player1
+    game.first_run = false
+  end
 
-validator = false
-
-current_player = player1
-mark = 'x'
-
-while game_on
-
-  unless validator
-    puts "#{current_player} YOUR TURN :"
+  unless game.validator
+    puts "#{game.current_player.name} YOUR TURN :"
     puts 'choose one available spot number in the board'
     player_input = gets.chomp
-    puts 'your move is a winning move!' # if (winning_move)
-    puts 'your move is a draw move!' # if (draw_move)
+    game.current_player.add_mark(player_input)
 
-    if spots.include?(player_input)
-      spots.delete(player_input)
-      validator = true
-      board = board.gsub(player_input, mark)
-      puts board
+    if game.update_board(player_input, game.current_player.symbol)
+      puts game.board
     else
       puts 'Enter a valid spot number: '
       next
     end
   end
 
-  validator = false
-  if spots.empty?
-    draw = true
-    puts "NO ONE WINS! IT'S A DRAW!!"
+  game.validator = false
+
+  puts game.winner_message(game.current_player)
+
+  puts game.draw_message
+
+  game.change_player(player1, player2)
+
+  game.game_on = false if game.winner == true || game.draw == true
+
+  next unless game.game_on == false
+
+  puts 'Do you wanna play again?'
+  reset = gets.chomp.upcase
+  choices = %w[Y N]
+  until choices.include?(reset)
+    puts "Digit 'Y' or 'N'"
+    reset = gets.chomp.upcase
   end
 
-  if current_player == player1
-    current_player = player2
-    mark = 'o'
-  elsif current_player == player2
-    current_player = player1
-    mark = 'x'
-  end
+  game = game.reset_game(game, reset)
 
-  game_on = false if winner == true || draw == true
-
-  while game_on == false
-    puts 'Do you wanna play again? (Y/N)'
-    reset_game = gets.chomp.upcase
-    choices = %w[Y N]
-    until choices.include?(reset_game)
-      puts "Digit 'Y' or 'N'"
-      reset_game = gets.chomp.upcase
-    end
-    if reset_game == 'Y'
-      puts "We'll reset the game"
-    else
-      puts 'THANKS FOR PLAYING!!'
-    end
+  if game.is_a?(String)
+    puts game
     break
   end
+
 end
