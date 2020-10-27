@@ -44,19 +44,31 @@ describe Game do
 
   describe '#winner_message' do
     let(:game) { Game.new }
-    
 
     it 'display the winner' do
-      game.winner
       player1 = Player.new('player1', 'x', 1)
       game.current_player = player1
+      player1.mark_spots = %w[1 2 3]
       expect(game.winner_message(player1)).to eql('player1 IS THE WINNER! CONGRATULATIONS')
     end
 
     it 'no one won yet' do
       player1 = Player.new('player1', 'x', 1)
       @current_player = player1
-      expect(game.winner_message(player1)).to eql("")
+      expect(game.winner_message(player1)).to eql('')
+    end
+  end
+
+  describe '#draw_message' do
+    let(:game) { Game.new }
+
+    it 'display message when it as draw' do
+      game.spots = []
+      expect(game.draw_message).to eql("\nNO ONE WINS! IT'S A DRAW!")
+    end
+
+    it 'returns empty string when is not a draw' do
+      expect(game.draw_message).to eql('')
     end
   end
 end
