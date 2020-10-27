@@ -1,4 +1,4 @@
-require './lib/player.rb'
+require_relative '../lib/player.rb'
 
 describe Player do
   let(:player1) { Player.new('player1', 'x', 1) }
