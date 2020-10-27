@@ -53,7 +53,7 @@ describe Game do
 
     it 'no one won yet' do
       player1 = Player.new('player1', 'x', 1)
-      @current_player = player1
+      game.current_player = player1
       expect(game.winner_message(player1)).to eql('')
     end
   end
