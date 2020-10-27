@@ -1,6 +1,6 @@
 class Game
-  attr_accessor :spots, :game_on, :first_run, :validator, :current_player
-  attr_reader :winner_cases, :winner, :draw, :board
+  attr_accessor :spots, :game_on, :first_run, :validator, :current_player, :draw
+  attr_reader :winner_cases, :winner, :board
 
   def initialize
     @winner = false
@@ -28,7 +28,7 @@ class Game
   def draw_message
     if @spots.empty? && @winner == false
       @draw = true
-      "\nNO ONE WINS! IT'S A DRAW!!"
+      "\nNO ONE WINS! IT'S A DRAW!"
     else
       ''
     end
